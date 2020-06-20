@@ -9,13 +9,15 @@ class RecipeTest {
 
     @Test
     public void shouldAddIngredientInTheRecipe() {
-        final Ingredient chocolate = new Ingredient(1L, "chocolate");
-        final Ingredient flour = new Ingredient(2L,"flour");
-        final Ingredient sugar = new Ingredient(3L,"sugar");
-        final Ingredient milk = new Ingredient(4L,"milk");
-        final Ingredient egg = new Ingredient(5L,"egg");
+        final Ingredient chocolate = createIngredient(1L, "chocolate");
+        final Ingredient flour = createIngredient(2L, "flour");
+        final Ingredient sugar = createIngredient(3L, "sugar");
+        final Ingredient milk = createIngredient(4L, "milk");
+        final Ingredient egg = createIngredient(5L, "egg");
 
-        final Recipe recipe = new Recipe(1L, "Chocolate Cake");
+        final Recipe recipe = new Recipe();
+        recipe.setId(1L);
+        recipe.setName("Chocolate Cake");
         recipe.add(chocolate, "one cup");
         recipe.add(flour, "two cup");
         recipe.add(sugar, "one cup");
@@ -29,6 +31,13 @@ class RecipeTest {
                         tuple(1L, 3L, "one cup"),
                         tuple(1L, 4L, "half a cup"),
                         tuple(1L, 5L, "three units"));
+    }
+
+    private Ingredient createIngredient(final Long id, final String name) {
+        final Ingredient ingredient = new Ingredient();
+        ingredient.setId(id);
+        ingredient.setName(name);
+        return ingredient;
     }
 
 }

@@ -3,19 +3,21 @@ package br.com.emmanuelneri.springboottest.model;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 @Entity
 @Table(name = "recipe_ingredient")
-@Data
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
+@ToString
 public class RecipeIngredient {
 
     @EmbeddedId
@@ -29,9 +31,10 @@ public class RecipeIngredient {
     }
 
     @Embeddable
-    @Data
     @AllArgsConstructor(access = AccessLevel.PACKAGE)
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    @Getter
+    @ToString
     public static class RecipeIngredientId implements Serializable {
         private Long recipeId;
         private Long ingredientId;

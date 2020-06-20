@@ -1,8 +1,10 @@
 package br.com.emmanuelneri.springboottest.model;
 
 import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,23 +16,21 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Data
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
+@ToString
 public class Recipe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Setter(AccessLevel.PROTECTED)
     private Long id;
 
+    @Setter
     private String name;
 
     @OneToMany(fetch = FetchType.LAZY)
     private Set<RecipeIngredient> ingredients = new HashSet<>();
-
-    public Recipe(final Long id, final String name) {
-        this.id = id;
-        this.name = name;
-    }
 
     public void add(final Ingredient ingredient, final String quantity) {
         final RecipeIngredient recipeIngredient = new RecipeIngredient(this, ingredient, quantity);
