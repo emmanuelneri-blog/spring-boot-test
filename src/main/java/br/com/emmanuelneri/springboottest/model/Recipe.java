@@ -6,12 +6,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,6 +29,8 @@ public class Recipe {
     @Setter(AccessLevel.PROTECTED)
     private Long id;
 
+    @NotNull
+    @Size(min = 3, max = 200)
     @Setter
     private String name;
 
