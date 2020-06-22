@@ -10,7 +10,7 @@
  
 ### TODO
 1. unit test OK
-2. Integration test
+2. Integration test OK
 3. BDD Test
 4. contract test
 5. Funcional test

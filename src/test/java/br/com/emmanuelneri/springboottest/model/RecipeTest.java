@@ -25,7 +25,7 @@ class RecipeTest {
         recipe.add(egg, "three units");
 
         Assertions.assertThat(recipe.getIngredients())
-                .extracting(r -> r.getId().getRecipeId(), i -> i.getId().getIngredientId(), RecipeIngredient::getQuantity)
+                .extracting(r -> r.getId().getRecipe().getId(), i -> i.getId().getIngredient().getId(), RecipeIngredient::getQuantity)
                 .containsExactlyInAnyOrder(tuple(1L, 1L, "one cup"),
                         tuple(1L, 2L, "two cup"),
                         tuple(1L, 3L, "one cup"),
